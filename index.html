@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>免疫風濕科 口試模擬｜台灣內科專科醫師口試</title>
+<meta name="description" content="台灣內科專科醫師口試前的免疫風濕科口試模擬：10 個病例、31 題，逐題出現、60 秒倒數，每題附參考答案與 PubMed 文獻。">
+<style>
+:root{
+  --paper:#F3F5F7; --sheet:#FFFFFF; --ink:#17212B; --ink2:#4A5866; --ink3:#7A8794;
+  --rule:#D5DCE3; --rule2:#E9EEF2;
+  --teal:#0B6E7A; --teal2:#095A64; --tealsoft:#E3F1F3;
+  --mark:#FFE86B; --red:#B8232F; --redsoft:#FBE9EA; --green:#2F7D4F; --greensoft:#E6F3EA;
+  --maxw:760px; --r:6px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:120px}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.7}
+a{color:var(--teal2)}
+a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+h1,h2,h3,h4{line-height:1.3;margin:0}
+h1{font-size:clamp(22px,5.2vw,30px);font-weight:700;letter-spacing:.01em}
+h2{font-size:clamp(19px,4.4vw,24px);font-weight:700;margin:28px 0 12px}
+h3{font-size:17px;font-weight:700;margin:20px 0 8px}
+h4{font-size:15px;font-weight:700;color:var(--ink2);margin:14px 0 4px}
+p{margin:0 0 10px}
+ul,ol{margin:0 0 10px;padding-left:1.3em}
+li{margin:4px 0}
+li::marker{color:var(--ink3)}
+mark{background:linear-gradient(transparent 32%,var(--mark) 32%,var(--mark) 92%,transparent 92%);color:inherit;padding:0 .12em;border-radius:2px}
+button{font:inherit;color:inherit}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--rule);background:var(--sheet);border-radius:var(--r);padding:8px 14px;cursor:pointer;line-height:1.3;min-height:40px}
+.btn:hover{border-color:var(--teal)}
+.btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn.primary:hover{background:var(--teal2)}
+.btn.good{background:var(--greensoft);border-color:var(--green);color:var(--green)}
+.btn.warn{background:var(--redsoft);border-color:var(--red);color:var(--red)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.small{font-size:14px;color:var(--ink2)}
+.muted{color:var(--ink3)}
+.tag{display:inline-block;font-size:12.5px;line-height:1;padding:5px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--ink2);white-space:nowrap}
+.tag.hi{border-color:var(--teal);color:var(--teal)}
+.tag.emerg{border-color:var(--red);color:var(--red)}
+.pmid{font-size:13.5px;color:var(--teal2);text-decoration:none;border-bottom:1px solid var(--rule);margin-right:8px;white-space:nowrap}
+.pmid:hover{border-bottom-color:var(--teal)}
+.refs{font-size:13.5px;color:var(--ink2);margin-top:12px;padding-top:10px;border-top:1px dashed var(--rule)}
+
+/* header */
+.top{background:var(--sheet);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:10}
+.top .wrap{padding-top:14px}
+.sub{font-size:14px;color:var(--ink2);margin:6px 0 4px}
+.prog{font-size:13px;color:var(--ink3);margin:0 0 8px;min-height:1.4em}
+.tabs{display:flex;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 12px;max-width:var(--maxw);margin:0 auto}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;background:none;padding:10px 12px;border-bottom:3px solid transparent;color:var(--ink2);cursor:pointer;font-size:15px;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--teal2);border-bottom-color:var(--teal);font-weight:700}
+main{padding:16px 0 64px}
+section[role="tabpanel"][hidden]{display:none}
+
+/* ten-minute sheet: the one loud element */
+.ten-wrap{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:16px 16px 8px;margin:8px 0 22px;position:relative}
+.ten-wrap h2{margin:0 0 4px}
+.ten-wrap .small{margin-bottom:10px}
+ol.ten{padding-left:1.6em;margin:0}
+ol.ten li{margin:8px 0;padding-left:.2em}
+ol.ten li::marker{color:var(--teal);font-weight:700}
+
+/* search + topic cards */
+.search{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--rule);border-radius:var(--r);background:var(--sheet);margin:6px 0 10px}
+.topic{background:var(--sheet);border:1px solid var(--rule);border-left:4px solid var(--rule);border-radius:var(--r);margin:10px 0;padding:0 14px}
+.topic[data-freq="高"]{border-left-color:var(--teal)}
+.topic[data-freq="中"]{border-left-color:#8FB8BE}
+.topic summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 0;font-weight:700;font-size:16.5px}
+.topic summary::-webkit-details-marker{display:none}
+.topic summary::before{content:"";width:8px;height:8px;border-right:2px solid var(--ink3);border-bottom:2px solid var(--ink3);transform:rotate(-45deg);flex:0 0 auto;transition:transform .15s}
+.topic[open] summary::before{transform:rotate(45deg)}
+.topic summary .name{flex:1}
+.topic .body{padding:0 0 14px}
+.topic .one{font-size:15.5px;color:var(--ink2);margin:0 0 6px;padding:8px 10px;background:var(--paper);border-radius:4px}
+.topic ul{padding-left:1.2em}
+.topic li{font-size:15px}
+.topic li.urgent{border-left:3px solid var(--red);padding-left:8px;list-style:none;margin-left:-1.2em}
+.topic li.tw{border-left:3px solid var(--mark);padding-left:8px;list-style:none;margin-left:-1.2em}
+.legend{font-size:13px;color:var(--ink3);margin:0 0 6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin:0 3px 0 8px}
+
+/* tables */
+.tbl{overflow-x:auto;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);margin:8px 0 18px}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule2)}
+th{background:var(--paper);font-weight:700;color:var(--ink2);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700;white-space:nowrap}
+.tbl.wrapcol td:first-child{white-space:normal;min-width:7em}
+.emerg td:first-child{border-left:3px solid var(--red)}
+
+/* flashcards */
+.fc-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 12px}
+.fc-bar select{font:inherit;padding:8px 10px;border:1.5px solid var(--rule);border-radius:var(--r);background:var(--sheet);max-width:100%}
+.fc{perspective:1200px;margin:6px 0 12px}
+.fc-inner{position:relative;min-height:230px;transition:transform .45s;transform-style:preserve-3d;cursor:pointer}
+.fc.is-flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:18px 18px 40px;display:flex;flex-direction:column}
+.fc-face .lbl{font-size:13px;color:var(--ink3);margin-bottom:8px}
+.fc-face .txt{font-size:17px;line-height:1.65;flex:1}
+.fc-face .hint{position:absolute;bottom:12px;right:16px;font-size:12.5px;color:var(--ink3)}
+.fc-a{transform:rotateY(180deg);border-left:4px solid var(--teal)}
+.fc-a .txt{font-size:16px}
+.fc-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between}
+.fc-actions .grp{display:flex;gap:8px}
+.fc-status{margin:10px 0 0;font-size:14px;color:var(--ink2)}
+.bar{height:6px;background:var(--rule2);border-radius:3px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+
+/* cases */
+.case-list{display:grid;gap:8px;margin:8px 0 16px}
+.case-item{text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.case-item:hover{border-color:var(--teal)}
+.case-item .n{color:var(--teal);font-weight:700;flex:0 0 auto}
+.case-item .t{font-weight:700}
+.case-item .d{font-size:13.5px;color:var(--ink2);display:block;margin-top:2px}
+.case-item.done .n::after{content:" ✓"}
+.case{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:16px}
+.case .vig{background:var(--paper);border-radius:4px;padding:10px 12px;margin:8px 0 14px;font-size:15.5px}
+.step{border-top:1px solid var(--rule2);padding:12px 0}
+.step .q{font-weight:700;margin:0 0 8px}
+.step .q::before{content:"主考官：";color:var(--teal);font-weight:700}
+.step .ans{margin-top:8px;border-left:3px solid var(--teal);padding-left:10px}
+.step .ans ul{margin:0;padding-left:1.1em}
+.step .ans li{font-size:15px}
+.timer{font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink2);margin-left:8px}
+.timer.low{color:var(--red);font-weight:700}
+.case-nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;margin-top:12px;align-items:center}
+
+/* quiz */
+.quiz{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:16px}
+.quiz .qn{font-size:13px;color:var(--ink3);margin-bottom:6px}
+.quiz .qt{font-weight:700;font-size:16.5px;margin-bottom:12px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;background:var(--sheet);border:1.5px solid var(--rule);border-radius:var(--r);padding:10px 12px;cursor:pointer;line-height:1.5}
+.opt:hover{border-color:var(--teal)}
+.opt.correct{border-color:var(--green);background:var(--greensoft)}
+.opt.wrong{border-color:var(--red);background:var(--redsoft)}
+.opt:disabled{cursor:default;opacity:1}
+.exp{margin-top:12px;border-left:3px solid var(--teal);padding-left:10px;font-size:15px}
+.quiz-nav{display:flex;justify-content:space-between;gap:8px;margin-top:14px;flex-wrap:wrap}
+.score{font-size:18px;font-weight:700;margin:6px 0}
+
+footer{border-top:1px solid var(--rule);padding:18px 0 40px;font-size:13px;color:var(--ink3)}
+footer .wrap p{margin:0 0 6px}
+
+@media (min-width:640px){
+  body{font-size:17px}
+  .topic li{font-size:15.5px}
+  .fc-face .txt{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .fc-inner{transition:none}
+  .bar i{transition:none}
+  .topic summary::before{transition:none}
+}
+@media print{
+  .top{position:static}
+  .tabs,.search,.btn,.fc-bar{display:none}
+  section[role="tabpanel"][hidden]{display:block}
+  .topic{break-inside:avoid}
+  .topic .body{display:block}
+  details>summary::before{display:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>免疫風濕科 口試模擬</h1>
+    <p class="sub">10 個病例、31 題，依口試節奏逐題出現。先<b>大聲說出</b>你的回答，再展開參考答案；每題附 60 秒倒數，模擬口試壓力。參考答案的每條要點皆附 PubMed 文獻。</p>
+    <p class="prog" id="prog"></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section aria-label="口試模擬">
+    <div class="fc-bar">
+      <label class="small"><input type="checkbox" id="case-timer-on" checked> 開啟 60 秒倒數</label>
+      <button class="btn" id="case-random" type="button">隨機抽一個病例</button>
+      <button class="btn" id="case-reset" type="button">重設進度</button>
+    </div>
+    <div id="case-list" class="case-list"></div>
+    <div id="case-view"></div>
+  </section>
+
+  <details class="topic" id="refs-wrap">
+    <summary><span class="name">本頁文獻</span><span class="tag" id="ref-count"></span></summary>
+    <div class="body" id="ref-list"></div>
+  </details>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>教學複習用途，非臨床決策依據；劑量與流程請以最新指引與院內規範為準。內容整理自 PubMed 收錄之分類標準、治療指引與關鍵試驗。</p>
+    <p>可直接發佈：本檔為單一 HTML，無外部相依。完成進度只保存在目前瀏覽期間。</p>
+  </div>
+</footer>
+
+<script>
+/* ===================== 文獻（全部經 PubMed 核對） ===================== */
+const REFS = {
+20872595:"Aletaha D. 2010 ACR/EULAR 類風濕性關節炎分類標準. Arthritis Rheum 2010",
+17548411:"Nishimura K. anti-CCP 與 RF 診斷準確度統合分析. Ann Intern Med 2007",
+34101376:"Fraenkel L. 2021 ACR 類風濕性關節炎治療指引. Arthritis Rheumatol 2021",
+36357155:"Smolen JS. EULAR RA 治療建議 2022 更新. Ann Rheum Dis 2023",
+35081280:"Ytterberg SR. ORAL Surveillance：tofacitinib 於 RA 的心血管與癌症風險. N Engl J Med 2022",
+23728635:"Shea B. 葉酸／folinic acid 減少 MTX 副作用（Cochrane）. Cochrane Database Syst Rev 2013",
+31383717:"Aringer M. 2019 EULAR/ACR 全身性紅斑狼瘡分類標準. Ann Rheum Dis 2019",
+37827694:"Fanouriakis A. EULAR SLE 治療建議 2023 更新. Ann Rheum Dis 2024",
+40331662:"Sammaritano LR. 2024 ACR 狼瘡腎炎篩檢、治療與管理指引. Arthritis Rheumatol 2025",
+12209517:"Houssiau FA. Euro-Lupus Nephritis Trial：低劑量 IV cyclophosphamide. Arthritis Rheum 2002",
+32937045:"Furie R. BLISS-LN：belimumab 於狼瘡腎炎兩年隨機試驗. N Engl J Med 2020",
+33971155:"Rovin BH. AURORA 1：voclosporin 於狼瘡腎炎. Lancet 2021",
+31851795:"Morand EF. TULIP-2：anifrolumab 於活動性 SLE. N Engl J Med 2020",
+25275721:"Melles RB, Marmor MF. 長期 hydroxychloroquine 的視網膜毒性風險. JAMA Ophthalmol 2014",
+26992838:"Marmor MF. AAO chloroquine/hydroxychloroquine 視網膜病變篩檢建議（2016 修訂）. Ophthalmology 2016",
+32090480:"Sammaritano LR. 2020 ACR 風濕病生殖健康管理指引. Arthritis Rheumatol 2020",
+16420554:"Miyakis S. 抗磷脂質症候群分類標準更新國際共識（Sydney）. J Thromb Haemost 2006",
+37635643:"Barbhaiya M. 2023 ACR/EULAR 抗磷脂質症候群分類標準. Arthritis Rheumatol 2023",
+31092409:"Tektonidou MG. EULAR 成人抗磷脂質症候群治療建議. Ann Rheum Dis 2019",
+30002145:"Pengo V. TRAPS：rivaroxaban vs warfarin 於高風險（三重陽性）APS. Blood 2018",
+12892393:"Asherson RA. 災難性抗磷脂質症候群（CAPS）國際共識：分類與治療. Lupus 2003",
+26352873:"Neogi T. 2015 ACR/EULAR 痛風分類標準. Arthritis Rheumatol 2015",
+32390306:"FitzGerald JD. 2020 ACR 痛風治療指引. Arthritis Rheumatol 2020",
+27457514:"Richette P. 2016 EULAR 痛風治療建議更新. Ann Rheum Dis 2017",
+20131255:"Terkeltaub RA. AGREE：急性痛風低劑量 vs 高劑量 colchicine. Arthritis Rheum 2010",
+15743917:"Hung SI. HLA-B*5801 為 allopurinol 嚴重皮膚不良反應之遺傳標記（台灣）. Proc Natl Acad Sci USA 2005",
+26399967:"Ko TM. HLA-B*58:01 基因型篩檢預防 allopurinol 嚴重皮膚不良反應（台灣前瞻研究）. BMJ 2015",
+29527974:"White WB. CARES：febuxostat vs allopurinol 心血管安全性. N Engl J Med 2018",
+33181081:"Mackenzie IS. FAST：febuxostat 長期心血管安全性（歐洲）. Lancet 2020",
+37495237:"Abhishek A. 2023 ACR/EULAR 焦磷酸鈣沉積症（CPPD）分類標準. Ann Rheum Dis 2023",
+19297344:"Rudwaleit M. ASAS 中軸型脊椎關節炎分類標準. Ann Rheum Dis 2009",
+36270658:"Ramiro S. ASAS-EULAR 中軸型脊椎關節炎治療建議 2022 更新. Ann Rheum Dis 2023",
+16871531:"Taylor W. CASPAR 乾癬性關節炎分類標準. Arthritis Rheum 2006",
+38499325:"Gossec L. EULAR 乾癬性關節炎藥物治療建議 2023 更新. Ann Rheum Dis 2024",
+23045170:"Jennette JC. 2012 Chapel Hill 血管炎命名共識（修訂）. Arthritis Rheum 2013",
+36351706:"Ponte C. 2022 ACR/EULAR 巨細胞動脈炎分類標準. Ann Rheum Dis 2022",
+36351705:"Grayson PC. 2022 ACR/EULAR 高安氏動脈炎分類標準. Ann Rheum Dis 2022",
+31270110:"Hellmich B. EULAR 大血管炎治療建議 2018 更新. Ann Rheum Dis 2020",
+28745999:"Stone JH. GiACTA：tocilizumab 於巨細胞動脈炎. N Engl J Med 2017",
+22388996:"Dasgupta B. 2012 EULAR/ACR 風濕性多發性肌痛暫行分類標準. Ann Rheum Dis 2012",
+26352874:"Dejaco C. 2015 EULAR/ACR 風濕性多發性肌痛治療建議. Arthritis Rheumatol 2015",
+35110333:"Robson JC. 2022 ACR/EULAR 肉芽腫性多血管炎（GPA）分類標準. Ann Rheum Dis 2022",
+35110332:"Suppiah R. 2022 ACR/EULAR 顯微多血管炎（MPA）分類標準. Ann Rheum Dis 2022",
+35110334:"Grayson PC. 2022 ACR/EULAR 嗜酸性肉芽腫性多血管炎（EGPA）分類標準. Ann Rheum Dis 2022",
+34235894:"Chung SA. 2021 ACR/Vasculitis Foundation ANCA 相關血管炎治療指引. Arthritis Rheumatol 2021",
+36927642:"Hellmich B. EULAR ANCA 相關血管炎治療建議 2022 更新. Ann Rheum Dis 2024",
+20647199:"Stone JH. RAVE：rituximab vs cyclophosphamide 於 ANCA 相關血管炎. N Engl J Med 2010",
+32053298:"Walsh M. PEXIVAS：血漿置換與類固醇減量於重症 ANCA 相關血管炎. N Engl J Med 2020",
+33596356:"Jayne DRW. ADVOCATE：avacopan 於 ANCA 相關血管炎. N Engl J Med 2021",
+25372085:"Guillevin L. MAINRITSAN：rituximab vs azathioprine 維持治療. N Engl J Med 2014",
+28514601:"Wechsler ME. MIRRA：mepolizumab 於 EGPA. N Engl J Med 2017",
+20413568:"Ozen S. EULAR/PRINTO/PRES 兒童血管炎分類標準（含 IgA 血管炎／HSP）. Ann Rheum Dis 2010",
+23441863:"ITR-ICBD. 貝西氏病國際分類標準（ICBD）27 國協作研究. J Eur Acad Dermatol Venereol 2014",
+29625968:"Hatemi G. EULAR 貝西氏症候群治療建議 2018 更新. Ann Rheum Dis 2018",
+31722152:"Hatemi G. Apremilast 治療貝西氏症候群口腔潰瘍（RELIEF）. N Engl J Med 2019",
+27785888:"Shiboski CH. 2016 ACR/EULAR 原發性修格蘭氏症候群分類標準. Arthritis Rheumatol 2017",
+31672775:"Ramos-Casals M. EULAR 修格蘭氏症候群局部與全身治療建議. Ann Rheum Dis 2020",
+24122180:"van den Hoogen F. 2013 ACR/EULAR 全身性硬化症分類標準. Arthritis Rheum 2013",
+39874231:"Del Galdo F. EULAR 全身性硬化症治療建議 2023 更新. Ann Rheum Dis 2025",
+11033587:"Steen VD, Medsger TA. 硬皮症腎危象長期預後（ACE 抑制劑時代）. Ann Intern Med 2000",
+27469583:"Tashkin DP. SLS II：mycophenolate vs cyclophosphamide 於硬皮症間質性肺病. Lancet Respir Med 2016",
+31112379:"Distler O. SENSCIS：nintedanib 於 SSc-ILD. N Engl J Med 2019",
+32866440:"Khanna D. focuSSced：tocilizumab 於全身性硬化症第三期試驗. Lancet Respir Med 2020",
+29079590:"Lundberg IE. 2017 EULAR/ACR 成人與兒童特發性發炎性肌病變分類標準. Ann Rheum Dis 2017",
+15880816:"Sato S. 抗 CADM-140（MDA5）抗體與臨床無肌病性皮肌炎／快速進展 ILD. Arthritis Rheum 2005",
+31524333:"Tsuji H. anti-MDA5 皮肌炎 ILD 三合一免疫抑制（高劑量 GC＋tacrolimus＋IV CYC）多中心前瞻研究. Arthritis Rheumatol 2020",
+21360500:"Mammen AL. Statin 相關自體免疫肌病之 anti-HMGCR 抗體. Arthritis Rheum 2011",
+21953614:"Trallero-Araguás E. anti-p155（TIF1γ）診斷癌症相關皮肌炎之統合分析. Arthritis Rheum 2012",
+11298544:"Chen YJ. 皮肌炎／多發性肌炎惡性腫瘤預測因子：台灣病例對照研究. Br J Dermatol 2001",
+27210465:"Fang YF. 皮肌炎／多發性肌炎惡性腫瘤：台灣 192 例分析. Clin Rheumatol 2016",
+36198179:"Aggarwal R. ProDERM：IVIG 於皮肌炎. N Engl J Med 2022",
+1578458:"Yamaguchi M. 成人 Still 病分類暫行標準. J Rheumatol 1992",
+39317417:"Fautrel B. EULAR/PReS Still 病（sJIA 與 AOSD）診斷與治療建議. Ann Rheum Dis 2024",
+24782338:"Fardet L. HScore：反應性噬血症候群診斷評分之發展與驗證. Arthritis Rheumatol 2014",
+26865703:"Ravelli A. 2016 全身型幼年特發性關節炎併巨噬細胞活化症候群分類標準. Ann Rheum Dis 2016",
+16937360:"Henter JI. HLH-2004 噬血性淋巴組織球增多症診斷與治療指引. Pediatr Blood Cancer 2007",
+31796497:"Wallace ZS. 2019 ACR/EULAR IgG4 相關疾病分類標準. Ann Rheum Dis 2020",
+25667206:"Carruthers MN. Rituximab 於 IgG4 相關疾病之前瞻開放性試驗. Ann Rheum Dis 2015",
+17405973:"Margaretten ME. 此成人病患是否為感染性關節炎？（Rational Clinical Examination）. JAMA 2007",
+25447850:"Reddy KR. AGA 免疫抑制治療期間 HBV 再活化之預防與治療指引. Gastroenterology 2015",
+28011918:"Chen MH. RA 生物製劑治療下之 HBV 再活化（台灣）. J Infect Dis 2017",
+31117160:"Chen YM. HBsAg 陰性／anti-HBc 陽性 RA 接受 rituximab 之 HBV 再活化（台灣長期觀察）. Int J Rheum Dis 2019",
+27832150:"Lim CH. 台灣 RA 首次使用 TNF 抑制劑一年內結核風險（全國世代）. PLoS One 2016",
+27064275:"Liao TL. 台灣 RA 生物製劑結核風險差異與 isoniazid 預防效果（全國世代）. PLoS One 2016",
+29674320:"Chen YM. 每週一次 isoniazid＋rifapentine 三個月（3HP）治療 RA 潛伏結核之可行性（台灣）. Ann Rheum Dis 2018",
+36597813:"Bass AR. 2022 ACR 風濕與肌肉骨骼疾病疫苗接種指引. Arthritis Care Res 2023",
+37845798:"Humphrey MB. 2022 ACR 類固醇引起骨質疏鬆預防與治療指引. Arthritis Rheumatol 2023",
+29092853:"Park JW. TMP-SMX 預防高劑量類固醇風濕病患者之肺囊蟲肺炎. Ann Rheum Dis 2018",
+25108385:"Yang SK. NUDT15 常見錯義變異與 thiopurine 引起白血球低下. Nat Genet 2014"
+};
+
+
+/* ===================== 口試模擬病例 ===================== */
+const CASES = [
+{id:"c1",title:"28 歲女性，關節痛、口腔潰瘍與蛋白尿",desc:"SLE 診斷 → 狼瘡腎炎切片與誘導 → 追蹤與懷孕規劃",
+vig:"28 歲女性，3 個月來雙手小關節疼痛腫脹、反覆無痛口腔潰瘍、臉頰紅疹；近 2 週腳踝水腫。BP 138/88，尿液 3+ 蛋白、紅血球 20–30/HPF 並見紅血球圓柱，UPCR 2.1，Cr 0.9。Hb 10.2，WBC 3,100，PLT 98,000。ANA 1:640 均質型，anti-dsDNA 高效價，C3 45、C4 6。",
+steps:[
+{q:"你的診斷是什麼？依 2019 EULAR/ACR 標準怎麼分類？",a:[
+"全身性紅斑狼瘡合併狼瘡腎炎（另需排除感染與藥物性狼瘡）。",
+"入門條件 ANA ≥1:80 已達；加權計分：口腔潰瘍 2、急性皮膚 6、關節炎 6、白血球低 3、血小板低 4、蛋白尿（>0.5 g）4、低補體雙低 4、anti-dsDNA 6 → 遠超 10 分且有臨床項。",
+"提醒：每個領域只計最高分，且各項須無更合理的其他解釋（例如感染造成的血球低）。"],refs:[31383717]},
+{q:"下一步檢查？要不要腎切片？",a:[
+"要。蛋白尿 ≥0.5 g/24h（UPCR ≥0.5）即為切片指徵，何況伴血尿與紅血球圓柱；切片決定 ISN/RPS 分級、活性與慢性指數，直接影響治療。",
+"同時：24 小時尿蛋白或 UPCR、Cr/eGFR、尿沉渣、補體、anti-dsDNA、aPL 三項（LA、aCL、anti-β2GPI）、CBC、直接抗球蛋白試驗、HBV/HCV、CXR、心電圖；切片前查凝血、血壓控制。",
+"感染排除：發燒時血液培養與 CRP/procalcitonin（SLE 發作 CRP 通常不高）。"],refs:[40331662,37827694]},
+{q:"切片為 class IV（活性指數高）。你的治療方案？",a:[
+"誘導：IV methylprednisolone 250–1,000 mg/d ×3 天，後口服 prednisone 0.5–0.6 mg/kg 快速減量（6 個月 ≤5 mg）。",
+"免疫抑制：MMF 2–3 g/d 或 Euro-Lupus 低劑量 IV CYC（500 mg q2w ×6）；建議加 belimumab（BLISS-LN）或 CNI（voclosporin AURORA 1／tacrolimus）形成三合一。",
+"全員 HCQ ≤5 mg/kg/d；ACEi/ARB 降蛋白尿、血壓 <130/80、SGLT2i 視情況；避孕諮詢（MMF、CYC 致畸）；PJP 預防（高劑量 GC 併免疫抑制）；骨質保護、疫苗。",
+"維持：MMF 或 AZA ≥3–5 年；目標 3 個月蛋白尿降 ≥25%、6 個月降 ≥50%、12 個月 <0.5–0.7 g/d。"],refs:[40331662,37827694,12209517,32937045,33971155]},
+{q:"她 1 年後緩解，想懷孕。你怎麼建議？",a:[
+"疾病穩定 ≥6 個月且無活動性腎炎再懷孕；MMF 停藥 ≥6 週改 AZA（懷孕可用），CYC 禁用；HCQ 全程續用（降低發作與新生兒狼瘡風險）。",
+"查 anti-Ro/La（陽性 → 16–26 週胎兒心臟超音波監測傳導阻滯）與 aPL（陽性 → aspirin ± LMWH）；低劑量 aspirin 從 12 週前預防子癲前症。",
+"孕期每 4–6 週評估蛋白尿、血壓、補體、anti-dsDNA；鑑別狼瘡腎炎發作與子癲前症（補體低、活動性沉渣偏發作）。"],refs:[32090480,37827694]}
+]},
+
+{id:"c2",title:"72 歲男性，新發頭痛與短暫視力喪失",desc:"GCA 急症：先治療再確診、切片時機、tocilizumab",
+vig:"72 歲男性，3 週新發右側顳部頭痛、咀嚼時下顎痠痛、早晨肩頸僵硬，昨天右眼短暫黑矇 5 分鐘。體溫 37.6°C，右顳動脈壓痛、脈搏減弱。ESR 88 mm/h，CRP 6.2 mg/dL，Hb 10.8，PLT 480,000。",
+steps:[
+{q:"最可能的診斷？你現在立刻要做什麼？",a:[
+"巨細胞動脈炎（GCA）合併眼部缺血警訊（一過性黑矇 → 前部缺血性視神經病變前兆），需視為急症。",
+"立即開始高劑量類固醇：有視力症狀 → IV methylprednisolone 500–1,000 mg/d ×3 天，之後 prednisone 1 mg/kg/d（≤60 mg）；當日眼科會診；不等切片或超音波結果。",
+"低劑量 aspirin 可考慮（證據不一）；同時安排顳動脈超音波（halo sign）或切片。"],refs:[36351706,31270110]},
+{q:"類固醇已開始，切片還有價值嗎？切片要注意什麼？",a:[
+"有。開始類固醇後 2 週內（甚至 4 週）切片仍可陽性，因此絕不因等切片延誤治療。",
+"單側取 ≥1 cm 以減少 skip lesion 假陰性；陰性但臨床高度懷疑仍可治療或做對側切片。",
+"超音波 halo sign 在有經驗中心可取代切片；懷疑大血管侵犯（雙上肢血壓差、雜音）做 CTA/MRA 或 PET。",
+"2022 ACR/EULAR 分類：≥50 歲必備，總分 ≥6（切片或 halo 5、ESR ≥50/CRP ≥10 得 3、突發視力喪失 3、下顎跛行 2、顳動脈異常 2…）。"],refs:[36351706]},
+{q:"6 個月後類固醇減至 10 mg 時復發。下一步？",a:[
+"復發（頭痛、ESR/CRP 上升）：重新升回上一個有效劑量；有缺血症狀則回到起始高劑量。",
+"加省類固醇藥：tocilizumab 162 mg 每週皮下（GiACTA：52 週持續緩解 56% vs 14%，累積類固醇減半）；替代 MTX。",
+"注意 tocilizumab 會壓抑 CRP/ESR，追蹤靠臨床症狀；用前篩 TB/HBV，注意憩室炎與血脂。",
+"長期：骨質保護（GIOP 指引）、血糖血壓、每年評估主動脈瘤（胸部影像）。"],refs:[28745999,31270110,37845798]}
+]},
+
+{id:"c3",title:"45 歲男性，急性紅腫熱痛的膝關節與發燒",desc:"痛風 vs 感染性關節炎：先抽液、共存可能、ULT 時機與 HLA-B*5801",
+vig:"45 歲男性，有高血壓與痛風病史（去年兩次腳趾發作），昨晚起右膝劇痛腫脹，無法承重，體溫 38.6°C。WBC 14,500，CRP 12 mg/dL，尿酸 9.2 mg/dL，Cr 1.4。",
+steps:[
+{q:"鑑別診斷？第一步做什麼？",a:[
+"感染性關節炎（首要排除）、痛風急性發作、CPPD、反應性關節炎；痛風病史不能排除感染，兩者可共存。",
+"立刻關節穿刺：細胞數與分類、Gram 染色、細菌培養、偏光顯微鏡結晶；同時抽血液培養 ×2。",
+"未抽液前不要打關節內類固醇；抽液後若懷疑感染即經驗性抗生素。"],refs:[17405973,26352873]},
+{q:"關節液 WBC 68,000/µL、PMN 92%，見針狀負雙折光結晶，Gram 染色陰性。怎麼解讀與處置？",a:[
+"MSU 結晶確認痛風，但 WBC >50,000（LR 7.7）、發燒與 PMN >90% 仍高度提示感染；Gram 染色敏感度僅約 50%。",
+"視為感染直到培養陰性：經驗性抗生素覆蓋 S. aureus（MRSA 風險用 vancomycin ± 第三代 cephalosporin），每日反覆抽吸或關節鏡引流。",
+"痛風本身：可用 colchicine 低劑量（1.0 mg 後 1 小時 0.5 mg）或 NSAID（腎功能 Cr 1.4 須小心），全身類固醇在感染未排除前避免；48–72 小時培養陰性再調整。"],refs:[17405973,20131255,32390306]},
+{q:"急性期過後，何時開始降尿酸？怎麼開？",a:[
+"指徵：一年 ≥2 次發作即符合 ACR 2020 強烈建議（另有 tophus、影像侵蝕）；合併 CKD、SU >9 亦支持。",
+"可在發作中或緩解後開始，第一線 allopurinol：台灣先查 HLA-B*5801（帶因約 20%，SCAR 患者 100% 帶因）；陰性者 ≤100 mg/d 起（CKD 更低），每 2–5 週上調至 SU <6 mg/dL（有 tophi <5）。",
+"預防性 colchicine 0.5 mg qd–bid 3–6 個月；HLA-B*5801 陽性改 febuxostat（有 CVD 病史需共同決策，CARES 疑慮）或 benzbromarone（注意肝毒、尿路結石）。",
+"衛教：減少酒精、果糖、內臟；檢視利尿劑；心血管代謝共病管理。"],refs:[32390306,15743917,26399967,29527974,33181081]}
+]},
+
+{id:"c4",title:"55 歲女性，MTX 足量 6 個月仍高活性的 RA",desc:"Treat-to-target 下一步、台灣的 TB/HBV 篩檢、JAKi 選擇",
+vig:"55 歲女性，RA 診斷 8 個月，anti-CCP 高效價，MTX 20 mg/週＋葉酸 6 個月，晨僵 2 小時、DAS28 5.4，X 光已有 MCP 侵蝕。過去有吸菸史 20 包年，B 型肝炎帶原（HBsAg 陽性）。",
+steps:[
+{q:"下一步治療策略？",a:[
+"先確認順從性與劑量（MTX 已足量）、排除感染或纖維肌痛造成的假性高活性，再依 treat-to-target 升階。",
+"她有不良預後因子（高效價 anti-CCP、高活性、早期侵蝕）→ 加 bDMARD（TNFi、abatacept、tocilizumab、rituximab）或 tsDMARD（JAKi），不建議只再加第二種 csDMARD。",
+"考量吸菸史（ILD、心血管與惡性風險）與年齡，且 HBV 帶原，TNFi／abatacept 等生物製劑合併抗病毒預防是合理首選；JAKi 在 ≥65 歲、吸菸或心血管風險者非優先。"],refs:[34101376,36357155,35081280]},
+{q:"開生物製劑前你要做什麼篩檢？在台灣特別注意什麼？",a:[
+"結核：IGRA（或 TST）＋ CXR；LTBI 先治療（INH 9 個月或 3HP 12 週）至少 1 個月後再開；台灣 TNFi 使用者結核風險上升，尤其第一年，adalimumab/infliximab 高於 etanercept。",
+"HBV：她 HBsAg 陽性 → 一律預防性 entecavir 或 tenofovir，先於或同時開始生物製劑，停藥後續 6–12 個月；台灣資料顯示未預防者再活化率高。anti-HBc 陽性／HBsAg 陰性者用 rituximab 亦需預防，其他生物製劑則監測 HBV DNA/ALT。",
+"其他：HCV、HIV、CBC/LFT、疫苗（流感、肺炎鏈球菌、重組帶狀疱疹）、懷孕計畫、心衰（TNFi）、憩室（tocilizumab）。"],refs:[27832150,27064275,29674320,28011918,31117160,25447850,36597813]},
+{q:"她問能否改用口服 JAK 抑制劑？你如何回答？",a:[
+"ORAL Surveillance：≥50 歲且 ≥1 心血管危險因子的 RA，tofacitinib 相較 TNFi 的 MACE 與惡性腫瘤（尤其肺癌）增加，吸菸者最明顯；她 55 歲且有吸菸史，屬高風險族群。",
+"依 EULAR 2022：≥65 歲、吸菸或曾吸菸、心血管或惡性風險者，僅在無合適替代時才用 JAKi；亞洲人帶狀疱疹風險高，用前接種重組帶狀疱疹疫苗。",
+"若最終使用：監測血脂、CBC/LFT、VTE 症狀；HBV 預防同樣需要。"],refs:[35081280,36357155]}
+]},
+
+{id:"c5",title:"60 歲女性，瀰漫型硬皮症突發高血壓與少尿",desc:"硬皮症腎危象：ACEi 立即上調、類固醇陷阱、ILD 與 PAH 篩檢",
+vig:"60 歲女性，1 年前診斷瀰漫型全身性硬化症（anti-RNA polymerase III 陽性），皮膚快速增厚，2 週前因關節痛開始 prednisolone 20 mg/d。今日頭痛、視力模糊，BP 195/120，Cr 由 0.8 升至 2.6，尿量減少，血液抹片見破碎紅血球，PLT 85,000。",
+steps:[
+{q:"診斷與立即處置？",a:[
+"硬皮症腎危象（SRC）：新發惡性高血壓＋急性腎損傷＋微血管溶血性貧血；anti-RNA polymerase III、瀰漫型早期、快速皮膚進展、近期 prednisone ≥15 mg/d 都是危險因子。",
+"立即口服 captopril 6.25–12.5 mg q6–8h 快速上調（每 24 小時內），目標數日內血壓回到基準；Cr 上升仍續用，不因此停藥。",
+"停高劑量類固醇（減至最低必要）；避免 NSAID；血壓仍高時加鈣離子阻斷劑或 ARB，必要時 IV 降壓；需要時透析（約半數可於 1–2 年內脫離）。",
+"鑑別：TTP/HUS（ADAMTS13）、其他 TMA；不建議預防性 ACEi。"],refs:[11033587,39874231]},
+{q:"她穩定後主訴活動性喘。你要評估什麼？",a:[
+"SSc 兩大致死原因：ILD（anti-Scl-70 為主，但瀰漫型都要查）與 PAH（anti-centromere 為主）；另考慮心肌炎、心包積液、貧血、肌炎。",
+"ILD：HRCT（NSIP 型態常見）＋ PFT（FVC、DLCO）；6 分鐘步行；FVC 下降 ≥10% 或 DLCO 下降 ≥15% 表示進展。",
+"PAH：每年 echo＋DLCO＋NT-proBNP（DETECT 演算法）；DLCO/FVC 比例下降是警訊；右心導管確診。"],refs:[39874231,24122180]},
+{q:"HRCT 顯示 NSIP，FVC 68%。治療？",a:[
+"第一線 MMF 2–3 g/d（SLS II：與口服 CYC 療效相當、耐受更佳）；快速進展可用 IV CYC 或 rituximab；tocilizumab（focuSSced，保 FVC）可用於早期炎性 ILD。",
+"抗纖維化 nintedanib（SENSCIS：FVC 年下降減少 44%，可與 MMF 併用）；注意腹瀉、肝功能。",
+"避免高劑量類固醇（腎危象風險）；戒菸、疫苗、氧氣；進展型考慮肺移植轉介。",
+"同時處理雷諾與指端潰瘍（CCB、PDE5i、iloprost、bosentan 預防新潰瘍）、胃食道逆流（PPI）。"],refs:[27469583,31112379,32866440,39874231]}
+]},
+
+{id:"c6",title:"62 歲男性，喀血、血尿與快速惡化的腎功能",desc:"肺腎症候群：ANCA/anti-GBM 同時查、誘導治療與 PEXIVAS、預防性用藥",
+vig:"62 歲男性，1 個月來倦怠、體重減輕、鼻塞帶血痂，2 天前開始喀血。BP 150/95，SpO2 91%。Cr 3.8（3 個月前 1.0），尿蛋白 2+、紅血球圓柱；Hb 8.5（較前下降 3 g），CXR 雙側肺泡浸潤。",
+steps:[
+{q:"最可能的診斷？你要立即安排什麼？",a:[
+"肺腎症候群：ANCA 血管炎（GPA 較符合：上呼吸道＋肺＋腎）最可能，鑑別 anti-GBM 病、SLE、cryoglobulinemia、感染（心內膜炎）與 APS。",
+"立即抽 ANCA（PR3/MPO ELISA）＋ anti-GBM（同時查，約 1/3 anti-GBM 併 ANCA）、ANA/dsDNA、補體、aPL、cryoglobulin、HBV/HCV、血液培養、尿沉渣。",
+"影像 CT 胸部（DAH 磨玻璃、結節、空洞）；DLCO 上升支持 DAH；支氣管鏡 BAL 逐次變血；盡快腎切片（pauci-immune 新月體 GN）。",
+"穩定呼吸與循環，準備 ICU；勿因等待結果延誤治療。"],refs:[23045170,35110333,34235894]},
+{q:"PR3-ANCA 陽性、anti-GBM 陰性，腎切片 pauci-immune 新月體 GN。治療方案？",a:[
+"誘導：pulse methylprednisolone 500–1,000 mg ×3 天，接口服 GC 依 PEXIVAS 減量流程（減量組非劣且嚴重感染少）；加 rituximab 375 mg/m² 每週 ×4（或 1 g ×2）或 IV CYC；RAVE 顯示 rituximab 非劣於 CYC，復發型更佳。",
+"Cr >3.4（正如本例）或 DAH 需插管：ANCA 血管炎試驗中 PLEX 未降低死亡或 ESKD，但併 anti-GBM 或嚴重 DAH 仍可考慮。",
+"Avacopan（ADVOCATE）可取代大部分口服 GC；需要時透析。",
+"併行：PJP 預防 TMP-SMX、HBV 篩檢與預防、疫苗、骨質保護、生育保存（CYC）。"],refs:[36927642,34235894,20647199,32053298,33596356,29092853]},
+{q:"6 個月後緩解，維持治療怎麼做？何時可以停？",a:[
+"首選 rituximab 500 mg 每 6 個月（MAINRITSAN：28 個月復發 5% vs AZA 29%），至少 18–24 個月；PR3 陽性、復發史、ENT 病變者更久（可達 4 年）。",
+"替代 AZA（先查 NUDT15）、MTX（腎功能允許時）、MMF；GC 盡早減停。",
+"追蹤：尿沉渣、Cr、CBC、IgG（低免疫球蛋白）、ANCA 效價（PR3 上升為復發警訊但不單獨作為加藥依據）、CD19。",
+"衛教：長期 ESKD 與心血管風險、感染、惡性腫瘤（CYC 相關膀胱癌）監測。"],refs:[25372085,36927642]}
+]},
+
+{id:"c7",title:"50 歲女性，眼瞼紫紅疹、掌部丘疹與快速加重的喘",desc:"anti-MDA5 皮肌炎與快速進展 ILD：早期三合一、台灣的癌症篩檢",
+vig:"50 歲女性，2 個月來眼瞼紫紅色皮疹、指節上紫紅色鱗屑丘疹、手掌側出現疼痛性丘疹與指尖潰瘍，近 2 週乾咳與活動性喘。近端肌力正常，CK 120 U/L，ferritin 2,800 ng/mL，HRCT 雙下肺磨玻璃樣變化，SpO2 93%。",
+steps:[
+{q:"診斷方向？哪個抗體最可能？",a:[
+"臨床無肌病性皮肌炎（CADM）合併快速進展 ILD，最符合 anti-MDA5 陽性皮肌炎：Gottron 疹、掌部疼痛性丘疹、皮膚潰瘍、ferritin 升高、CK 正常。",
+"立即送肌炎特異性抗體（MDA5、Jo-1 等 ARS、TIF1γ、NXP2、Mi-2、SAE、SRP、HMGCR）；MDA5 抗體效價與 ferritin 是預後指標。",
+"鑑別：抗合成酶症候群（技工手、雷諾、關節炎）、SLE、感染性肺炎（PJP、CMV）、藥物性肺炎。"],refs:[15880816,29079590]},
+{q:"anti-MDA5 陽性，PaO2 下降中。治療？",a:[
+"不要等待肌病證據或單用類固醇。早期三合一：高劑量 GC（prednisolone 1 mg/kg ± pulse）＋ tacrolimus＋ IV CYC（Tsuji 2020：6 個月存活 89% vs 傳統逐步加藥 33%）。",
+"難治或惡化：加 PLEX、tofacitinib、rituximab、IVIG（ProDERM 支持 IVIG 於皮肌炎）；ECMO 作為肺移植橋接的討論。",
+"支持：ICU 監測、PJP 與 CMV 預防／監測（強免疫抑制）、避免高流量氧氣延誤插管評估。",
+"追蹤 ferritin、KL-6、HRCT、PFT。"],refs:[31524333,36198179,29092853]},
+{q:"皮肌炎病人的癌症篩檢在台灣要注意什麼？",a:[
+"皮肌炎整體癌症風險上升，診斷前後 3 年最高；anti-TIF1γ 與 anti-NXP2 陽性（>40 歲）風險最高，anti-MDA5 相對低但仍需基本篩檢。",
+"台灣資料：皮肌炎相關癌症以鼻咽癌最常見（Chen 2001；Fang 2016 全國資料），其次肺癌、乳癌、大腸癌 → 建議鼻咽鏡＋頭頸部影像，加 CT 胸腹骨盆與年齡適當篩檢（乳房、子宮頸、大腸）。",
+"抗體判讀：anti-TIF1γ 陽性 → 癌症相關 DM 的 OR 約 27（統合分析）；anti-Mi-2 反應佳、癌症少。"],refs:[11298544,27210465,21953614]}
+]},
+
+{id:"c8",title:"24 歲男性，夜間下背痛與前葡萄膜炎",desc:"axSpA 分類、NSAID 反應、生物製劑選擇與眼睛／腸道考量",
+vig:"24 歲男性，1 年來下背與臀部痛，清晨最嚴重、活動後改善，晨僵 45 分鐘，半夜痛醒；曾有一次急性紅眼畏光經眼科診斷前葡萄膜炎。父親有僵直性脊椎炎。CRP 1.8 mg/dL，骨盆 X 光雙側骶髂關節輕度硬化，HLA-B27 陽性。",
+steps:[
+{q:"這是什麼背痛？依 ASAS 標準如何分類？",a:[
+"發炎性背痛（發病 <40 歲、隱匿、運動改善、休息不改善、夜間痛，≥4/5）。",
+"ASAS axSpA：背痛 ≥3 個月且發病 <45 歲。影像路徑：X 光骶髂炎（modified New York ≥ 雙側 grade 2 或單側 grade 3–4）或 MRI 活動性骶髂炎＋≥1 SpA 特徵；臨床路徑：HLA-B27＋≥2 特徵。",
+"他有葡萄膜炎、家族史、CRP 上升、發炎性背痛等特徵，B27 陽性 → 符合；若 X 光未達標準，安排骶髂關節 MRI（STIR 骨髓水腫）。",
+"分類標準不等於診斷：仍需排除機械性背痛、感染性骶髂炎、DISH、瀰漫性骨轉移。"],refs:[19297344]},
+{q:"第一線治療？何時升階？",a:[
+"衛教、規律運動與物理治療、戒菸；NSAID 第一線（足量持續使用），對 axSpA 常有戲劇性反應；反應不佳者 2 種 NSAID 各試 2 週（共 4 週）。",
+"仍高活性（ASDAS ≥2.1）＋客觀發炎證據（CRP 或 MRI）→ bDMARD（TNFi、IL-17i）或 JAKi；csDMARD（SSZ）僅對周邊關節炎有幫助，對中軸無效。",
+"局部類固醇注射（附著點、骶髂關節）可用；全身性類固醇不建議。"],refs:[36270658]},
+{q:"他 NSAID 反應不佳。你會選哪種生物製劑？為什麼？",a:[
+"有反覆前葡萄膜炎 → 首選單株抗體 TNFi（adalimumab、infliximab、certolizumab、golimumab），etanercept 對葡萄膜炎效果差；IL-17i 對眼睛效果不明。",
+"若有 IBD → 同樣選單株 TNFi，IL-17i 禁忌（可誘發或惡化 IBD）；若乾癬明顯 → IL-17i 較優。",
+"用前篩檢 TB（台灣重點）、HBV；治療目標 ASDAS <2.1（理想 <1.3）；12 週評估，無效換機轉；長期緩解可考慮減量延長間隔。",
+"提醒：AS 病人跌倒或低能量外傷後新發頸／背痛要 CT，脊椎骨折風險高。"],refs:[36270658,27832150]}
+]},
+
+{id:"c9",title:"32 歲女性，反覆流產與左下肢深部靜脈栓塞",desc:"APS 診斷條件、抗凝選擇（DOAC 陷阱）、產科處置與 CAPS",
+vig:"32 歲女性，兩次 12 週前流產與一次 24 週死胎（胎盤功能不全），本次因左小腿腫痛診斷 DVT。LA 陽性、aCL IgG 高效價、anti-β2GPI IgG 陽性（12 週前另一次檢驗亦陽性）。PLT 105,000，ANA 1:160，dsDNA 陰性。",
+steps:[
+{q:"診斷？分類標準的要件？",a:[
+"抗磷脂質症候群（原發性；需持續追蹤是否演變為 SLE）。",
+"Sydney 2006：≥1 臨床（血栓或妊娠病態）＋≥1 實驗室（LA、aCL 或 anti-β2GPI 中高效價，兩次間隔 ≥12 週）；2023 ACR/EULAR：臨床與實驗室各 ≥3 分，並將血栓依危險因子加權。",
+"抗凝（尤其 DOAC）會干擾 LA，抽血時機要在抗凝前或依實驗室建議；三重陽性為最高風險族群。"],refs:[16420554,37635643]},
+{q:"她的 DVT 該如何抗凝？可以用 DOAC 嗎？",a:[
+"Warfarin INR 2–3 長期（無限期）；急性期以 LMWH 橋接。",
+"不建議 DOAC：TRAPS 試驗三重陽性 APS 中 rivaroxaban 血栓事件 12% vs warfarin 0%（多為動脈），提前終止；EULAR 2019 明確反對三重陽性或動脈血栓者用 DOAC。",
+"動脈血栓：INR 2–3 加抗血小板或 INR 3–4；復發血栓：加 aspirin、提高 INR 或改 LMWH。",
+"避免雌激素避孕、控制心血管危險因子；血小板低多不需特別處理，除非 <50,000。"],refs:[31092409,30002145]},
+{q:"她再次懷孕時如何處理？若出現多器官血栓怎麼辦？",a:[
+"產科 APS＋有血栓病史：孕期改用治療劑量 LMWH（warfarin 6–12 週致畸）＋低劑量 aspirin；產後續 6–12 週再回 warfarin（哺乳可用）。",
+"僅產科 APS 無血栓：aspirin＋預防劑量 LMWH；高風險 aPL 但無事件者：低劑量 aspirin。孕期監測子癲前症、胎兒生長、血小板。",
+"CAPS：≥3 器官、1 週內、小血管血栓病理；治療三合一 抗凝＋高劑量 GC＋PLEX 及／或 IVIG，找誘因（感染、手術、停抗凝、產褥期），難治 rituximab／eculizumab；死亡率約 30–50%。"],refs:[32090480,31092409,12892393]}
+]},
+
+{id:"c10",title:"35 歲男性，每晚高燒、咽痛與鮭魚色皮疹",desc:"AOSD 診斷與排除、治療升階、MAS 早期辨識",
+vig:"35 歲男性，3 週每晚 39.5°C 尖峰型發燒，白天退燒，咽痛、雙腕與膝關節痛，發燒時軀幹出現淡粉色斑疹。WBC 18,000（中性球 88%），ferritin 6,500 ng/mL，AST/ALT 上升，RF/ANA 陰性，血液培養 ×3 陰性，CT 見輕度肝脾與淋巴結腫大。",
+steps:[
+{q:"最可能的診斷？要先排除什麼？",a:[
+"成人 Still 病（AOSD）：Yamaguchi 主要 4 項（發燒 ≥39°C ≥1 週、關節痛 ≥2 週、典型皮疹、白血球 ≥10,000 且中性球 ≥80%）全符合，加咽痛、肝脾淋巴結腫大、肝功能異常、RF/ANA 陰性 → ≥5 項且 ≥2 主要。",
+"但它是排除性診斷：感染（心內膜炎、EBV/CMV/HIV、結核、深部膿瘍）、惡性腫瘤（淋巴瘤！淋巴結腫大者考慮切片）、其他風濕病（SLE、血管炎、反應性關節炎）、藥物反應（DRESS）。",
+"支持性檢驗：ferritin >5× ULN、glycosylated ferritin <20%、IL-18；追蹤 ESR/CRP。"],refs:[1578458,39317417]},
+{q:"排除後確診 AOSD。治療怎麼開始？何時升階？",a:[
+"輕症（僅關節、皮疹）：NSAID 可試但多不足；多數需 prednisone 0.5–1 mg/kg/d（器官侵犯用 pulse）。",
+"EULAR/PReS 2024：早期考慮 IL-1（anakinra、canakinumab）或 IL-6（tocilizumab）抑制劑以省類固醇並達目標；MTX 用於關節型或省類固醇。",
+"目標：4 週內臨床緩解，之後類固醇減量至停；追蹤 ferritin、肝功能、血球；生物製劑前篩 TB/HBV。"],refs:[39317417]},
+{q:"治療第 2 週，他再度發燒、PLT 降至 70,000、ESR 由 90 降到 15、ferritin 升到 28,000、fibrinogen 120。發生什麼事？怎麼處理？",a:[
+"巨噬細胞活化症候群（MAS／次發性 HLH）：ESR 反常下降（fibrinogen 消耗）＋ ferritin 飆升＋血球（尤其血小板）下降＋TG 上升、肝酶上升，符合 2016 MAS 標準（ferritin >684 且 PLT ≤181、AST >48、TG >156、fibrinogen ≤360 中 ≥2 項）；HScore 亦可評估。",
+"找誘因：感染（EBV、CMV、細菌）、藥物（少數與生物製劑或 NSAID 相關）；查 sCD25、骨髓噬血（陰性不排除）。",
+"治療：pulse methylprednisolone 1 g ×3 天＋高劑量 anakinra（可至 4–8 mg/kg/d）± cyclosporine；難治 etoposide（HLH-2004）、IVIG、emapalumab；處理 DIC、輸血、ICU；避免延誤，死亡率可達 10–20%。"],refs:[26865703,24782338,16937360,39317417]}
+]}
+];
+
+
+/* ===================== 邏輯 ===================== */
+const $ = (s, el) => (el || document).querySelector(s);
+const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const pmid = id => `<a class="pmid" href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank" rel="noopener" title="${esc(REFS[id] || "")}">PMID ${id}</a>`;
+const refLine = ids => ids && ids.length ? `<div class="refs">文獻：${ids.map(pmid).join("")}</div>` : "";
+
+const state = { done: new Set() };
+const cs = { cur: null, step: 0, timerId: null, left: 60 };
+
+function renderProg() {
+  const n = state.done.size;
+  $("#prog").textContent = n === CASES.length ? `10 個病例全部完成。可按「重設進度」再練一輪。` : `已完成 ${n} / ${CASES.length} 個病例`;
+}
+function renderCaseList() {
+  $("#case-list").innerHTML = CASES.map((c, i) => `<button type="button" class="case-item${state.done.has(c.id) ? " done" : ""}" data-id="${c.id}"><span class="n">${i + 1}</span><span><span class="t">${c.title}</span><span class="d">${c.desc}</span></span></button>`).join("");
+  $$("#case-list .case-item").forEach(b => b.addEventListener("click", () => openCase(b.dataset.id)));
+  renderProg();
+}
+function stopTimer() { if (cs.timerId) { clearInterval(cs.timerId); cs.timerId = null; } }
+function startTimer() {
+  stopTimer();
+  const t = $("#timer");
+  if (!t) return;
+  if (!$("#case-timer-on").checked) { t.textContent = ""; t.classList.remove("low"); return; }
+  cs.left = 60;
+  t.textContent = "60 秒"; t.classList.remove("low");
+  cs.timerId = setInterval(() => {
+    cs.left--;
+    t.textContent = cs.left > 0 ? `${cs.left} 秒` : "時間到，請作答";
+    if (cs.left <= 10) t.classList.add("low");
+    if (cs.left <= 0) stopTimer();
+  }, 1000);
+}
+function openCase(id) {
+  cs.cur = CASES.find(c => c.id === id);
+  cs.step = 0;
+  $("#case-list").hidden = true;
+  $(".fc-bar").hidden = true;
+  renderCase();
+}
+function renderCase() {
+  const c = cs.cur, s = c.steps[cs.step], last = cs.step === c.steps.length - 1;
+  const idx = CASES.indexOf(c);
+  $("#case-view").innerHTML = `<div class="case">
+<p class="small muted">病例 ${idx + 1} / ${CASES.length}</p>
+<h3>${c.title}</h3>
+<p class="vig">${c.vig}</p>
+<div class="step">
+<p class="q">${s.q}<span class="timer" id="timer"></span></p>
+<p class="small muted">先大聲說出你的回答，再看參考答案。</p>
+<button type="button" class="btn primary" id="reveal">顯示參考答案</button>
+<div class="ans" id="ans" hidden><ul>${s.a.map(x => `<li>${x}</li>`).join("")}</ul>${refLine(s.refs)}</div>
+</div>
+<div class="case-nav">
+<span class="small">第 ${cs.step + 1} / ${c.steps.length} 題</span>
+<span>
+<button type="button" class="btn" id="case-back">回到列表</button>
+<button type="button" class="btn primary" id="case-next" disabled>${last ? "完成病例" : "下一題"}</button>
+</span></div></div>`;
+  $("#reveal").addEventListener("click", () => { $("#ans").hidden = false; $("#reveal").disabled = true; $("#case-next").disabled = false; stopTimer(); $("#timer").textContent = ""; });
+  $("#case-next").addEventListener("click", () => {
+    if (last) { state.done.add(c.id); renderDone(); }
+    else { cs.step++; renderCase(); }
+  });
+  $("#case-back").addEventListener("click", closeCase);
+  startTimer();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function renderDone() {
+  stopTimer();
+  const c = cs.cur, idx = CASES.indexOf(c);
+  const nextC = CASES.find((x, i) => i > idx && !state.done.has(x.id)) || CASES.find(x => !state.done.has(x.id));
+  $("#case-view").innerHTML = `<div class="case">
+<h3>完成：${c.title}</h3>
+<p class="small">回想一下：這個病例的三個關鍵句你能不看答案說出來嗎？說不出來就再做一次。</p>
+<p class="small muted">已完成 ${state.done.size} / ${CASES.length} 個病例</p>
+<div class="case-nav">
+<span>
+<button type="button" class="btn" id="case-redo">再做一次</button>
+<button type="button" class="btn" id="case-back">回到列表</button>
+</span>
+<span>${nextC ? `<button type="button" class="btn primary" id="case-go-next">下一個病例</button>` : ""}</span>
+</div></div>`;
+  $("#case-redo").addEventListener("click", () => openCase(c.id));
+  $("#case-back").addEventListener("click", closeCase);
+  const nb = $("#case-go-next"); if (nb) nb.addEventListener("click", () => openCase(nextC.id));
+  renderProg();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function closeCase() { stopTimer(); cs.cur = null; $("#case-view").innerHTML = ""; $("#case-list").hidden = false; $(".fc-bar").hidden = false; renderCaseList(); }
+$("#case-timer-on").addEventListener("change", () => { if (cs.cur && $("#timer")) startTimer(); });
+$("#case-random").addEventListener("click", () => {
+  const pool = CASES.filter(c => !state.done.has(c.id));
+  const pick = (pool.length ? pool : CASES)[Math.floor(Math.random() * (pool.length ? pool : CASES).length)];
+  openCase(pick.id);
+});
+$("#case-reset").addEventListener("click", () => { state.done.clear(); renderCaseList(); });
+
+/* ---- 文獻 ---- */
+(function renderRefs() {
+  const ids = []; CASES.forEach(c => c.steps.forEach(s => (s.refs || []).forEach(r => { if (!ids.includes(r)) ids.push(r); })));
+  $("#ref-list").innerHTML = `<ol>${ids.map(r => `<li>${esc(REFS[r] || "")} ${pmid(r)}</li>`).join("")}</ol>`;
+  $("#ref-count").textContent = `${ids.length} 篇`;
+})();
+renderCaseList();
+</script>
+</body>
+</html>
